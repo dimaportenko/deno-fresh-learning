@@ -1,0 +1,6 @@
+{
+  "commands": {
+    "dev": "deno task start",
+    "update": "deno task update"
+   }
+}
