@@ -1,5 +1,6 @@
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
 import { getCookies } from "$std/http/cookie.ts";
+import { LoginForm } from "@/components/LoginForm.tsx";
 
 interface Data {
   isLoggedIn: boolean;
@@ -22,34 +23,14 @@ export default function Home({ data }: PageProps<Data>) {
       </p>
 
       <div class="mx-auto">
-        <a href="/dashboard" class="underline underline-offset-2 text-blue-500">Dashboard</a>
+        <a href="/dashboard" class="underline underline-offset-2 text-blue-500">
+          Dashboard
+        </a>
       </div>
 
       <div class="mx-auto">
         {data.isLoggedIn ? <a href="/logout">Logout</a> : <LoginForm />}
       </div>
     </div>
-  );
-}
-
-function LoginForm() {
-  return (
-    <form method="POST" action="/api/login" class="flex flex-col gap-4">
-      <input
-        type="text"
-        name="username"
-        placeholder="Username"
-        class="border p-2"
-      />
-      <input
-        type="password"
-        name="password"
-        placeholder="Password"
-        class="border p-2"
-      />
-      <button type="submit" class="border p-2">
-        Login
-      </button>
-    </form>
   );
 }

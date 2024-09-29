@@ -6,19 +6,31 @@ export const handler: Handlers = {
     const cookies = getCookies(req.headers);
 
     if (cookies.auth === "bar") {
-      return ctx.render()
+      return ctx.render();
     }
 
     const url = new URL(req.url);
-    url.pathname = "/";
+    url.pathname = "/login";
     return Response.redirect(url);
-  }
-}
+  },
+};
 
 export default function DashboardPage() {
   return (
-    <div>
-      <h1>Dashboard</h1>
+    <div class="p-4">
+      <div class="flex gap-4">
+        <a href="/" class="underline underline-offset-2 text-blue-500">
+          Home
+        </a>
+
+        <a href="/logout" class="underline underline-offset-2 text-blue-500">
+          Logout
+        </a>
+      </div>
+
+      <div class="py-4">
+        <h1>Dashboard</h1>
+      </div>
     </div>
   );
 }
