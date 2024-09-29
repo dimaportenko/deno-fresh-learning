@@ -22,9 +22,6 @@ export const handler: Handlers = {
     const entries = kv.list<Expense>({ prefix: ["expenses"] });
     const expenses: Expense[] = [];
     for await (const entry of entries) {
-      // console.log(entry.key); // ["preferences", "ada"]
-      // console.log(entry.value); // { ... }
-      // console.log(entry.versionstamp); // "00000000000000010000"
       expenses.push(entry.value);
     }
 
@@ -33,9 +30,11 @@ export const handler: Handlers = {
   async POST(req: Request) {
     const data = await req.json();
     const expenseData = createPostSchema.parse(data);
-    // generate a random id
+
+    // generate id based on the date timestamp
     const expense: Expense = {
-      id: Math.floor(Math.random() * 1000),
+      id: Date.now(),
+      // id: Math.floor(Math.random() * 1000),
       ...expenseData,
     };
 
@@ -46,6 +45,21 @@ export const handler: Handlers = {
     if (!ok) {
       throw new Error("Failed to save expense");
     }
+
+    return new Response(JSON.stringify(expense));
+  },
+  async DELETE(req: Request) {
+    const data = await req.json();
+    const expenseId = Number(data.id);
+    const kv = await Deno.openKv();
+    // check if the expense exists
+    const expenseKey = ["expenses", expenseId];
+    const expense = await kv.get(expenseKey);
+    if (!expense) {
+      throw new Error("Expense not found");
+    }
+
+    await kv.delete(expenseKey);
 
     return new Response(JSON.stringify(expense));
   },

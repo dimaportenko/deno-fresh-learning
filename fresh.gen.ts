@@ -6,8 +6,11 @@ import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $api_expenses from "./routes/api/expenses.ts";
 import * as $api_joke from "./routes/api/joke.ts";
+import * as $api_login from "./routes/api/login.ts";
+import * as $dashboard_index from "./routes/dashboard/index.tsx";
 import * as $greet_name_ from "./routes/greet/[name].tsx";
 import * as $index from "./routes/index.tsx";
+import * as $logout from "./routes/logout.ts";
 
 import { type Manifest } from "$fresh/server.ts";
 
@@ -17,8 +20,11 @@ const manifest = {
     "./routes/_app.tsx": $_app,
     "./routes/api/expenses.ts": $api_expenses,
     "./routes/api/joke.ts": $api_joke,
+    "./routes/api/login.ts": $api_login,
+    "./routes/dashboard/index.tsx": $dashboard_index,
     "./routes/greet/[name].tsx": $greet_name_,
     "./routes/index.tsx": $index,
+    "./routes/logout.ts": $logout,
   },
   islands: {},
   baseUrl: import.meta.url,
