@@ -1,7 +1,9 @@
-import { useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
+import { Todo } from "@/routes/api/todos/index.ts";
 
 function Todos() {
   const [todo, setTodo] = useState<string>("");
+  const [todos, setTodos] = useState<Todo[]>([]);
 
   const onSubmit = async () => {
     try {
@@ -14,6 +16,21 @@ function Todos() {
       console.error(error);
     }
   };
+
+  const getTodos = async () => {
+    try {
+      const response = await fetch("/api/todos");
+      const todosData = await response.json();
+
+      setTodos(todosData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getTodos();
+  }, []);
 
   return (
     <div class="flex flex-col gap-2">
@@ -34,6 +51,16 @@ function Todos() {
         >
           Add
         </button>
+      </div>
+
+      <div>
+        {/* {JSON.stringify(todos)} */}
+      </div>
+
+      <div class="flex flex-col gap-2 pt-10">
+        {todos.map((item) => (
+          <div key={item.id}>{item.todo}</div>
+        ))}
       </div>
     </div>
   );
