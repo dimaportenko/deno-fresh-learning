@@ -1,3 +1,5 @@
+import { Button } from "@/components/Button.tsx";
+
 export function LoginForm() {
   return (
     <form method="POST" action="/api/login" class="flex flex-col gap-4">
@@ -13,9 +15,9 @@ export function LoginForm() {
         placeholder="Password"
         class="border p-2"
       />
-      <button type="submit" class="border p-2">
+      <Button type="submit">
         Login
-      </button>
+      </Button>
     </form>
   );
 }

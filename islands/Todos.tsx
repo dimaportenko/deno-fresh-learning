@@ -1,5 +1,6 @@
 import { useEffect, useState } from "preact/hooks";
 import { Todo } from "@/routes/api/todos/index.ts";
+import { Button } from "@/components/Button.tsx";
 
 function Todos() {
   const [todo, setTodo] = useState<string>("");
@@ -45,12 +46,11 @@ function Todos() {
             setTodo(target.value);
           }}
         />
-        <button
-          class="bg-lime-500 px-3 text-white rounded-lg"
+        <Button
           onClick={onSubmit}
         >
           Add
-        </button>
+        </Button>
       </div>
 
       <div>
