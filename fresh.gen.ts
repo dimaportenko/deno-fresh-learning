@@ -5,16 +5,19 @@
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $_layout from "./routes/_layout.tsx";
-import * as $api_expenses from "./routes/api/expenses.ts";
+import * as $api_expenses_index from "./routes/api/expenses/index.ts";
+import * as $api_expenses_total_amount from "./routes/api/expenses/total-amount.ts";
 import * as $api_joke from "./routes/api/joke.ts";
 import * as $api_login from "./routes/api/login.ts";
 import * as $api_todos_index from "./routes/api/todos/index.ts";
 import * as $dashboard_index from "./routes/dashboard/index.tsx";
+import * as $expenses_index from "./routes/expenses/index.tsx";
 import * as $greet_name_ from "./routes/greet/[name].tsx";
 import * as $index from "./routes/index.tsx";
 import * as $login_index from "./routes/login/index.tsx";
 import * as $logout from "./routes/logout.ts";
 import * as $todo_index from "./routes/todo/index.tsx";
+import * as $Expenses from "./islands/Expenses.tsx";
 import * as $Todos from "./islands/Todos.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
@@ -23,11 +26,13 @@ const manifest = {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
     "./routes/_layout.tsx": $_layout,
-    "./routes/api/expenses.ts": $api_expenses,
+    "./routes/api/expenses/index.ts": $api_expenses_index,
+    "./routes/api/expenses/total-amount.ts": $api_expenses_total_amount,
     "./routes/api/joke.ts": $api_joke,
     "./routes/api/login.ts": $api_login,
     "./routes/api/todos/index.ts": $api_todos_index,
     "./routes/dashboard/index.tsx": $dashboard_index,
+    "./routes/expenses/index.tsx": $expenses_index,
     "./routes/greet/[name].tsx": $greet_name_,
     "./routes/index.tsx": $index,
     "./routes/login/index.tsx": $login_index,
@@ -35,6 +40,7 @@ const manifest = {
     "./routes/todo/index.tsx": $todo_index,
   },
   islands: {
+    "./islands/Expenses.tsx": $Expenses,
     "./islands/Todos.tsx": $Todos,
   },
   baseUrl: import.meta.url,

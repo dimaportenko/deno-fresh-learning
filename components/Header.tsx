@@ -10,6 +10,7 @@ export function Header() {
       <div class="flex gap-4 items-center">
         <Link href="/dashboard">Dashboard</Link>
         <Link href="/todo">Todo</Link>
+        <Link href="/expenses">Expenses</Link>
       </div>
     </div>
   );

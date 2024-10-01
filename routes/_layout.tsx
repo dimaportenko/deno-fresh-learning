@@ -3,9 +3,11 @@ import { Header } from "@/components/Header.tsx";
 
 export default function Layout({ Component }: PageProps) {
   return (
-    <div class="layout">
+    <div class="layout min-h-screen">
       <Header />
-      <Component />
+      <div>
+        <Component />
+      </div>
     </div>
   );
 }

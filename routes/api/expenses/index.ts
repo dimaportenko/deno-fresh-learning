@@ -8,7 +8,7 @@ const expenseSchema = z.object({
   date: z.string(),
 });
 
-type Expense = z.infer<typeof expenseSchema>;
+export type Expense = z.infer<typeof expenseSchema>;
 
 const createPostSchema = z.object({
   name: z.string().min(3).max(20),
