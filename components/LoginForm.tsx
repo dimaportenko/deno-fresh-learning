@@ -1,19 +1,18 @@
-import { Button } from "@/components/Button.tsx";
+import { Button } from "@/components/ui/Button.tsx";
+import { Input } from "@/components/ui/Input.tsx";
 
 export function LoginForm() {
   return (
     <form method="POST" action="/api/login" class="flex flex-col gap-4">
-      <input
+      <Input
         type="text"
         name="username"
         placeholder="Username"
-        class="border p-2"
       />
-      <input
+      <Input
         type="password"
         name="password"
         placeholder="Password"
-        class="border p-2"
       />
       <Button type="submit">
         Login

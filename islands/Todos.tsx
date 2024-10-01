@@ -1,6 +1,7 @@
 import { useEffect, useState } from "preact/hooks";
 import { Todo } from "@/routes/api/todos/index.ts";
-import { Button } from "@/components/Button.tsx";
+import { Button } from "@/components/ui/Button.tsx";
+import { Input } from "@/components/ui/Input.tsx";
 
 function Todos() {
   const [todo, setTodo] = useState<string>("");
@@ -36,11 +37,10 @@ function Todos() {
   return (
     <div class="flex flex-col gap-2">
       <div class="flex gap-3">
-        <input
+        <Input
           name="todo"
           placeholder="Add a todo"
           type="text"
-          class="rounded-lg border w-full px-2.5 py-1.5"
           onChange={(event) => {
             const target = event.target as HTMLInputElement;
             setTodo(target.value);
